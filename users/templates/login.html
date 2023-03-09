@@ -1,0 +1,51 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'css\login.css' %}">
+</head>
+<body>
+    <div class="login-view">
+        <form class="login-form" method="POST">
+            {% csrf_token %}
+            <div class="col-form">
+                {% if form.errors %}
+                {% for field in form %}
+                {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="form-group">
+                    <label>Username <span class="text-danger">*</span></label>
+                    {{form.username}}
+                </div>
+            </div>
+            <div class="col-form">
+                <div class="form-group">
+                    <label>Password <span class="text-danger">*</span></label>
+                    {{form.password}}
+                </div>
+            </div>
+            <div class="col-form form-group">
+                <button class="btn" type="submit">
+                    <span id="btn-center">&#10003;</span>
+                </button>
+            </div>
+            <div class="col-form">
+                <p class="mb-0 "><small class="text-dark ">Don't have an account ? Sign Up</small> <a
+                        href="{% url 'register-admin' %}" class="text-dark">Admin</a> & <a
+                        href="{% url 'register-employee' %}" class="text-dark">Employee</a>
+                </p>
+            </div>
+        </form>
+
+    </div>
+</body>

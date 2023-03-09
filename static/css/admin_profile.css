@@ -1,0 +1,365 @@
+* {box-sizing: border-box}
+
+body{
+    margin: 0;
+}
+
+section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 5vh;
+}
+
+.section-manager{
+    min-height: 100%;
+}
+
+.employees-info{
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+    border-radius: 4px;
+    box-shadow: 0 0 18px rgb(0 0 0 / 40%);
+}
+
+.vehicles-info{
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+    border-radius: 4px;
+    box-shadow: 0 0 18px rgb(0 0 0 / 40%);
+}
+
+.info-wrapper{
+    background-color: #20B2AA;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    border-style: outset;
+    border-color: #008B8B;
+}
+
+.col-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.info-user{
+    display: flex;
+    flex-direction: row;
+}
+
+.col-info-row{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.car-name{
+    width: 150px;
+    padding-left: 10px;
+}
+
+.del-btn{
+    width: 30px;
+    height: 30px;
+    background-color: #20B2AA;
+    border-radius: 100%;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: 0px;
+    border-width: 3px;
+    box-shadow: 0 0 18px rgb(220 20 60 / 50%);
+    border-color: #8B0000;
+    cursor: pointer;
+}
+
+.add-btn{
+    width: 40px;
+    height: 40px;
+    background-color: #20B2AA;
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: 10px;
+    border-width: 3px;
+    box-shadow: 0 0 18px rgb(0 255 255 / 100%);
+    border-color: #00FFFF;
+    cursor: pointer;
+}
+
+.add-btn:hover{
+    background-color: #008B8B;
+}
+
+.del-btn:hover{
+    background-color: #008B8B;
+}
+
+#del-btn-center{
+    font-size: 15px;
+    font-weight: 900;
+    color: #2F4F4F;
+}
+
+#btn-center{
+    font-size: 30px;
+    font-weight: 900;
+    color: #2F4F4F;
+}
+
+.circle-m2{
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    margin-left: 10%;
+    box-shadow: 0 0 18px rgb(0 255 255 / 100%);
+    border-color: #4682B4;
+    cursor: pointer;
+}
+
+.circle-m3{
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    margin-left: 10%;
+    box-shadow: 0 0 18px rgb(0 255 255 / 100%);
+    border-color: #4682B4;
+    cursor: pointer;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.vehicle-status{
+    width: 40%;
+}
+
+p{
+    padding-left: 10%;
+}
+
+img{
+    margin-left: 10%;
+}
+
+.section-address{
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: center;
+    background-color: #F08080;
+}
+
+.address-v{
+    width: 400px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.add-btn-address{
+    width: 40px;
+    height: 40px;
+    background-color: #20B2AA;
+    border-radius: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    border-width: 3px;
+    box-shadow: 0 0 18px rgb(0 255 255 / 100%);
+    border-color: #00FFFF;
+    cursor: pointer;
+}
+
+.add-btn-address:hover{
+    background-color: #008B8B;
+}
+
+#id-google-address{
+  outline-color: #F8F8FF;
+  background-color: #E6E6FA;
+  line-height: 30px;
+  border-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-width: 3px 4px 4px 3px;
+  border-color: #D8BFD8;
+  border-style: outset;
+  padding-left: 10px;
+  box-shadow: 2px 2px 0px rgb(121 222 231 / 100%);
+}
+
+#map-label{
+    color: #00FFFF;
+}
+
+#map-route{
+    width: 60vw;
+    height: 550px;
+    border-style: outset;
+}
+
+#schedule{
+    position: fixed;
+    width: 120px;
+    height: 40px;
+    top: 600px;
+    left: 50px;
+    background: #66CDAA;
+    border-radius: 10px;
+    border-width: 3px 4px 4px 3px;
+    border-color: #D8BFD8;
+    border-style: outset;
+    box-shadow: 2px 2px 0px rgb(121 222 231 / 100%);
+    cursor: pointer;
+}
+
+#startapp{
+    position: fixed;
+    width: 120px;
+    height: 40px;
+    top: 500px;
+    left: 50px;
+    background: #66CDAA;
+    border-radius: 10px;
+    border-width: 3px 4px 4px 3px;
+    border-color: #D8BFD8;
+    border-style: outset;
+    box-shadow: 2px 2px 0px rgb(121 222 231 / 100%);
+    cursor: pointer;
+}
+#schedule:hover{
+    background: #142a4c;
+    border-style: ridge;
+    box-shadow: 0px 0px 0px rgb(121 222 231 / 100%);
+    color: white;
+}
+
+#startapp:hover{
+    background: #142a4c;
+    border-style: ridge;
+    box-shadow: 0px 0px 0px rgb(121 222 231 / 100%);
+    color: white;
+}
+
+#scheduale-cover{
+    display: none;
+    position: fixed;
+    width:100%;
+    height:100%;
+    top: 0;
+    background-color: rgb(139, 139, 158);
+    opacity: 0.4;
+}
+
+#scheduale-grid{
+    overflow: auto;
+    display: none;
+    position: fixed;
+    width:450px;
+    height:450px;
+    background-color: #D8BFD8;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    border-radius: 10px;
+    border-color:#ADD8E6;
+    cursor:pointer;
+    box-shadow: 0 0 18px rgb(255 182 193 / 100%);
+    border-style: outset;
+}
+
+#scheduale-time{
+    display: none;
+    background: #142a4c;
+    padding: 10px;
+}
+
+#form-scheduale{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+}
+
+#scheduale-view{
+    padding: 10px;
+}
+
+#fildset-schedule{
+    margin-top: 50px;
+}
+
+#title-legend{
+    color: white;
+    margin-bottom: 20px;
+}
+
+.label-sch{
+    color: white;
+}
+
+#submit-drivers{
+    margin-top: 20px;
+}
+
+.grid-tools{
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#schedule-drivers-add{
+    display: none;
+    position: fixed;
+    width:250px;
+    height:400px;
+    background-color: #142a4c;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    border-radius: 10px;
+    border-color:#ADD8E6;
+    cursor:pointer;
+    box-shadow: 0 0 18px rgb(255 182 193 / 100%);
+    border-style: outset;
+}
+
+.sch-drivers-name{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-style: inset;
+    border-width: 2px 2px 2px 2px;
+    border-color: #142a4c;
+}
+
+.scedule-driver-name{
+    height: 25px;
+    color: white;
+    background-color: #142a4c;
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-style: ridge;
+}
+
+.schedulevalue{
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-top: 10px;
+    border-style: ridge;
+    font-size: 20px;
+    background-color: #142a4c;
+    color: white;
+
+}
+

@@ -1,0 +1,136 @@
+* {box-sizing: border-box}
+
+body{
+    background-color: #D8BFD8;
+    height: auto;
+}
+
+header {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    padding: 0.5em 2em;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 10px;
+    background-color: #20B2AA;
+    border-style: outset;
+    border-color: #008B8B;
+}
+
+.logo {
+    width: 50px;
+}
+
+.slogan {
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: large;
+    color: #2F4F4F;
+}
+
+
+.menu-button {
+    width: 55px;
+}
+
+
+.menu-nav {
+    position: absolute;
+    /* position: sticky;  */
+    top: 14vh;
+    background-color: #20B2AA;
+    height: 73vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    border: 2px solid #001116;
+    transform: translateX(-120%);
+    transition: transform 0.4s cubic-bezier(0, 1.2, 0.88, 1.49);
+    /* transition: transform 0.7s cubic-bezier(0, 1.2, 1, -0.11); */
+}
+
+.menu-nav > a {
+    background-color: #00CED1;
+    font-size: large;
+    color:whitesmoke;
+    padding: 5vh;
+    margin-top: 1vh;
+}
+
+.menu-nav > a:hover{
+    color: #008080;
+    background-color: #20B2AA;
+}
+
+.is--open {
+    transform: translateX(-10%);
+}
+
+#configMode{
+    width: 110px;
+    height: 9.5vh;
+    background-color: #142a4c;
+    color: white;
+    cursor: pointer;
+    padding-top: 25px;
+    text-align: center;
+}
+
+#configForm  {
+    display: none;
+    position: fixed;
+    background: #ccc;
+    width: 400px;
+    height: 250px;
+    padding: 40px 20px 20px 40px;
+    margin: 9px 0px 0px 371px;
+    color: #333;
+    border-style: ridge;
+    border-width: 3px;
+    border-color: #142a4c;
+}
+
+#login {
+    width: 290px;
+    display:block;
+    background:#069;
+    color:#fff;
+}
+.label {
+   cursor: pointer;
+   display:block;
+   padding: 5px 15px;
+   font-size: 16px;
+   font-weight: bold;
+}
+.form-label {
+    width: 70px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.form-field {
+    width: 180px;
+}
+
+.form-elements {
+    font-size: 0px;
+    margin: 10px 0 0 0;
+    display: block;
+}
+
+.form-label, .form-field {
+    display: inline-block;
+}
+
+.form-field input {
+    padding: 3px 5px;
+}
+
+.submit-btn input {
+    margin-left: 70px;
+}
+
+

@@ -1,0 +1,109 @@
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/worker_profile.css' %}">
+</head>
+<body>
+<a class="logout-btn" href="#" onClick="document.getElementById('logoutform').submit()">Logout</a>
+<form id="logoutform" method="POST" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <input type="hidden">
+</form>
+
+<p class="name-driver">
+    {{ name }}
+</p>
+<div class="info-driver">
+  <div>
+    <span>Model</span>
+    <p>{{ vehicle_name }}</p>
+  </div>
+  <div>
+    <span>VIN</span>
+    <p>{{ vehicle_vin }}</p>
+  </div>
+</div>
+<div class="control-btn">
+  <button id="btn-previous" onclick="previousRoute();">previous</button>
+  <span>{{current_lap}} din {{total_lap}}</span>
+  <button id="btn-next" onclick="nextRoute();">next</button>
+</div>
+
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>Fields</th>
+        <th>{{message}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Start</td>
+        <td>{{directions.origin}}</td>
+      </tr>
+      <tr>
+        <td>Destination</td>
+        <td>{{directions.destination}}</td>
+      </tr>
+      <tr>
+        <td>Duration</td>
+        <td>{{directions.duration}}</td>
+      </tr>
+      <tr>
+        <td>Distance</td>
+        <td>{{directions.distance}}</td>
+      </tr>
+      <tr>
+        <td>Directions</td>
+        <td id="dir-toggle">click <a href="javascript:void(0)" onclick="DirectionsToggle()">here</a></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <table id="dir-table" hidden>
+    <thead>
+      <tr>
+        <th>Directions</th>
+        <th>Distance</th>
+        <th>Duration</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for leg in directions.route %}
+          <tr>
+          <td>Leg {{ forloop.counter }}</td>
+          <td></td>
+          <td></td>
+        </tr>
+        {% for dist, dur, text in leg.steps %}
+        <tr>
+          <td>{{text|safe}}</td>
+          <td>{{dist}}</td>
+          <td>{{dur}}</td>
+        </tr>
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+<div class="map-container">
+   <div id="map-route-worker"></div>
+</div>
+<script type="text/javascript">
+        var google_api_key = "{{google_api_key|safe}}";
+        var lat_a = {{lat_a|safe}};
+        var long_a = {{long_a|safe}};
+        var origin = "{{origin|safe}}";
+        var destination = "{{destination|safe}}";
+        var route = {{waypts|safe}};
+    </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="{% static 'js/worker_profile.js' %}"></script>
+<script src="{% static 'js/google_maps_api.js' %}"></script>
+
+</body>

@@ -1,0 +1,118 @@
+* {box-sizing: border-box}
+
+html{
+  background-color: #D8BFD8;
+}
+
+.row{
+  max-width: 500px;
+  margin-right:10vw;
+  margin-top:5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.position-relative{
+  display: flex;
+  flex-direction: column;
+  padding-top:25px;
+}
+
+.dh{
+  display: flex;
+  flex-wrap:wrap;
+
+}
+
+.form-widgets{
+  width: 90%;
+  margin: auto;
+  outline-color: #FFFAFA;
+  background-color: #FFFAFA;
+  line-height: 30px;
+  border-bottom-right-radius: 10px;
+  border-radius: 10px;
+  border-width: 3px 4px 4px 3px;
+  border-color: #D8BFD8;
+  padding-left: 10px;
+  box-shadow: 2px 2px 0px rgb(47 79 79 / 100%);
+  border-style: outset;
+}
+
+.form-widgets-md6{
+  outline-color: #FFFAFA;
+  background-color: #FFFAFA;
+  line-height: 30px;
+  border-bottom-right-radius: 10px;
+  border-radius: 10px;
+  border-width: 3px 4px 4px 3px;
+  border-color: #D8BFD8;
+  padding-left: 10px;
+  box-shadow: 2px 2px 0px rgb(47 79 79 / 100%);
+  border-style: outset;
+}
+
+#sub_btn{
+  margin: 10px auto;
+  line-height: 28px;
+}
+
+
+.btn{
+    width: 45px;
+    height: 45px;
+    background-color: rgb(218, 165, 32);
+    border-radius: 100%;
+    border-width: 3px;
+    box-shadow: 0 0 18px rgb(0 255 255 / 100%);
+    border-color: #00FFFF;
+    margin: 10px auto;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #008B8B;
+}
+
+#btn-center{
+    font-size: 30px;
+    font-weight: 900;
+    color: #2F4F4F;
+
+}
+
+.label-form-I{
+  padding-left:10px;
+}
+
+.label-form{
+  padding-left:20px;
+}
+
+.custom-control{
+  width: 85%;
+  margin: auto;
+}
+
+.register-view{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.btn-primary{
+  margin-top: 1vw;
+}
+
+#myMap-container{
+  height: fit-content;
+  margin-top:5vw;
+  border-style: outset;
+}
+
+.register-view{
+  height: 100%;
+}
+

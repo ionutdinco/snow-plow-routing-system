@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/admin_profile.css' %}">
+{% endblock %}
+{% block title %}
+AdminProfile
+{% endblock %}
+<body>
+
+{% block user %}
+{{ name }}
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'add_employee' %}"> Manage resources </a>
+<a href="{% url 'login' %}"> Routing </a>
+{% endblock %}
+
+{% block section %}
+<section class="section-manager" id="section-top">
+    <div>
+        <div class="employees-info">
+            <div class="info-wrapper text-center">Employees</div>
+            {% for user_info in users_info %}
+            <div class="info-wrapper">
+                <div class="col-info">
+                    <div class="info-user">
+                        <img src="{% static 'png/user_image.png' %}" alt="User image" width="50">
+                        <p> {{ user_info.first_name}} {{ user_info.last_name}}</p>
+                    </div>
+                    <p> {{user_info.email}} </p>
+                </div>
+                <div class="col-info-row">
+                    <p>Machinery:</p>
+                    <p class="car-name" id="car_name-{{ forloop.counter0 }}">{{ user_info.car_name }}</p>
+                    <button class="del-btn" id="del-btn-{{ forloop.counter0 }}" onclick="remove_tool('{{user_info.user_id}}', {{ forloop.counter0 }}, this);">
+                        <span id="del-btn-center">&#8722;</span>
+                    </button>
+                    <button class="add-btn" id="add-btn-{{ forloop.counter0 }}" onclick="add_tool('{{user_info.user_id}}', {{ forloop.counter0 }}, this);">
+                        <span id="btn-center">&#43;</span>
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div>
+        <div class="vehicles-info">
+            <div class="info-wrapper text-center">Vehicles</div>
+            {% for machinery in machinerys %}
+            <div class="info-wrapper">
+                <div class="col-info">
+                    <div class="info-user">
+                        <p>Brand:</p>
+                        <p> {{ machinery.model}} </p>
+                    </div>
+                    <div class="info-user">
+                        <p>VIN:</p>
+                        <p> {{ machinery.vin }} </p>
+                    </div>
+                    <div class="info-user">
+                        <p>Driver Id:</p>
+                        <p> {{ machinery.driver_id }} </p>
+                    </div>
+                </div>
+                <div class="col-info-row">
+                    {% if not machinery.ready %}
+                        <p class="vehicle-status" id="vehicle-status-{{forloop.counter0}}">Not Ready: </p>
+                        <button class="circle-m2" id="circle-{{ forloop.counter0 }}"
+                                onclick="update_vehicle_status('{{machinery.vin}}', {{machinery.lst_digit_vin}}, this)"></button>
+                        <SCRIPT> document.getElementById("circle-"+{{ forloop.counter0 }}).style.backgroundColor = "LightPink"</SCRIPT>
+                    {% else %}
+                        <p class="vehicle-status" id="vehicle-status-{{forloop.counter0}}">Ready: </p>
+                        <button class="circle-m3" id="circle-{{ forloop.counter0 }}"
+                                onclick="update_vehicle_status('{{machinery.vin}}', {{machinery.lst_digit_vin}}, this)"></button>
+                        <SCRIPT> document.getElementById("circle-"+{{ forloop.counter0 }}).style.backgroundColor = "Aquamarine"</SCRIPT>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<section class="section-address" id="section-bottom">
+    <div class="address-v">
+      <label for="id-google-address" class="label-el" ><h1 id="map-label">Vehicles Address</h1></label>
+      <input type="text" placeholder="*Begin typing address" id="id-google-address" name="google_address">
+      <input type="hidden" class="geo" id="id-lat-veh-addres" value="">
+      <input type="hidden" class="geo" id="id-long-veh-addres" value="">
+      <button class="add-btn-address" id="btn-save-add-view-map" onclick="updateMap()">
+          <span id="btn-center">&#10003;</span>
+      </button>
+    </div>
+    <div class="map-container">
+        <div id="map-route"></div>
+    </div>
+</section>
+<button id="schedule" onclick="updateScheduale()">Schedule</button>
+<button id="startapp" onclick="startApp()">StartApp</button>
+<div id="scheduale-cover">
+</div>
+<div id="scheduale-grid">
+    <div id="scheduale-time">
+        <button class="add-btn" onclick="exitNewScheduale()">
+            <span id="del-btn-center">&#8593;</span>
+        </button>
+        <form method = "POST" id="form-scheduale">
+        {% csrf_token %}
+        {{ form }}
+        <input type = "submit" value = "Submit">
+    </form>
+    </div>
+    <div id="scheduale-view">
+    <button class="add-btn" onclick="newScheduale()">
+        <span id="del-btn-center">&#43;</span>
+    </button>
+        <div id="schedule-display">
+            {% for schedule in scheduler %}
+                <div id="schedule-grid-{{forloop.counter0}}">
+                    <div class="grid-tools">
+                        <p class="schedulevalue" id="gridtools-{{forloop.counter0}}">{{ schedule }}</p>
+                        <button class="del-btn" id="delete-sch-{{forloop.counter0}}" onclick="removeSchedule('{{schedule}}', '#schedule-grid-{{forloop.counter0}}', this);">
+                        <span id="del-btn-center">&#10005;</span>
+                    </button>
+                        <button class="del-btn" id="add-sch-{{forloop.counter0}}" onclick="addScheduleDrivers('{{schedule}}', 'grid-data-{{forloop.counter0}}')">
+                        <span id="del-btn-center">&#43;</span>
+                    </button>
+                        <button class="del-btn" id="remove-sch-{{forloop.counter0}}">
+                        <span id="del-btn-center">&#8722;</span>
+                    </button>
+                    </div>
+                    <div class="sch-drivers-name" id="grid-schedule-{{forloop.counter0}}"></div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+<DIV id="schedule-drivers-add">
+    <button onclick="closeListBox()">
+        <span id="del-btn-center">&#10005;</span>
+    </button>
+    <form method="POST" id="drivers-listbox">
+     <fieldset id="fildset-schedule">
+        <legend id="title-legend">Abailable Drivers</legend>
+        <input id="submit-drivers" type="submit" value="Submit now" />
+    </fieldset>
+    </form>
+</DIV>
+{% endblock %}
+
+{% block js%}
+    <script type="text/javascript" src="{% static 'js/admin_profile.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/admin_profile_v2.js' %}"></script>
+    <script type="text/javascript">
+        var google_api_key = "{{google_api_key|safe}}";
+        var latitude = "{{ lat }}";
+        var longitude = "{{ lng }}";
+        var data_drivers = [];
+        var current_schedulr = "";
+        function updateScheduale(){
+            document.getElementById("scheduale-grid").style.display='block';
+            document.getElementById("scheduale-cover").style.display='block';
+            getDriversScheduleAjax();
+        }
+    </script>
+    <script src="{% static 'js/google_places_api.js' %}"></script>
+{% endblock %}
+</body>

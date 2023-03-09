@@ -1,0 +1,85 @@
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'css\register_employee.css' %}">
+</head>
+
+<body>
+<div class="register-view">
+    <form class="register-form" method="POST">
+        {% csrf_token %}
+        <div class="col-md-12">
+            {% if form.errors %}
+            {% for field in form %}
+            {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }} <{{field.name}}></strong>
+            </div>
+            {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-group dh">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="label-form-I">First name <span class="text-danger">*</span></label>
+                    {{form.first_name}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="label-form-I">Last name <span class="text-danger">*</span></label>
+                    {{form.last_name}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="label-form">Username <span class="text-danger">*</span></label>
+                {{form.username}}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="label-form">Email <span class="text-danger">*</span></label>
+                {{form.email}}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="label-form">Nounce <span class="text-danger">*</span></label>
+                {{form.validator_token}}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="label-form">Password <span class="text-danger">*</span></label>
+                {{form.password1}}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                {{form.county.as_hidden}}
+            </div>
+        </div>
+        <div class="col-md-12 form-group" id="sub_btn">
+            <button class="btn" type="submit">
+                <span id="btn-center">&#10003;</span>
+            </button>
+        </div>
+        <div class="mx-auto">
+            <p class="mb-0 "><small class="text-dark">Already have an account ?</small>
+                <a href="{% url 'login' %}" class="text-dark font-weight-bold">Sign in</a></p>
+        </div>
+    </form>
+
+</div>
+
+</body>

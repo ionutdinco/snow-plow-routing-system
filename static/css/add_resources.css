@@ -1,0 +1,145 @@
+* {box-sizing: border-box}
+
+body{
+    margin: 0;
+}
+
+section > div{
+    max-width: 75vw;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 75px;
+}
+
+.add-employee{
+    min-width: 300px;
+    flex-grow: 1;
+    margin: 1vw;
+    background-color: #20B2AA;
+    border-radius: 10px;
+    box-shadow: 0 0 18px rgb(0 0 0 / 100%);
+    border-style: outset;
+}
+
+.s0{
+border-top-left-radius: 10px;
+}
+
+.s1{
+border-top-right-radius: 10px;
+}
+
+.row{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.box-size{
+    width: 50%;
+}
+
+.row-wrapp{
+    display: flex;
+    flex-direction: row;
+}
+
+.info{
+    margin: auto;
+    padding-top: 70px;
+}
+
+.info-mail{
+    padding-top: 70px;
+}
+
+#widget_mails{
+    width: 75%;
+    height: 28px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    outline-color: #F8F8FF;
+    background-color: #E6E6FA;
+    line-height: 30px;
+    border-bottom-right-radius: 10px;
+    border-radius: 10px;
+    border-width: 3px 4px 4px 3px;
+    border-color: #D8BFD8;
+    padding-left: 10px;
+    box-shadow: 2px 2px 0px rgb(121 222 231 / 100%);
+    border-style: outset;
+
+}
+
+.info-label{
+    width: 75%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+}
+
+.l1{
+    padding-top: 70px;
+}
+
+.check{
+    padding-top: 0px;
+}
+
+.form-input{
+    width: 75%;
+    height: 28px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    outline-color: #F8F8FF;
+    background-color: #E6E6FA;
+    line-height: 30px;
+    border-bottom-right-radius: 10px;
+    border-radius: 10px;
+    border-width: 3px 4px 4px 3px;
+    border-color: #D8BFD8;
+    padding-left: 10px;
+    box-shadow: 2px 2px 0px rgb(121 222 231 / 100%);
+    border-style: outset;
+}
+
+.btn{
+    width: 50px;
+    height: 50px;
+    background-color: #20B2AA;
+    border-radius: 100%;
+    border-width: 3px;
+    box-shadow: 0 0 18px rgb(0 255 255 / 100%);
+    border-color: #00FFFF;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #008B8B;
+}
+
+#btn-center{
+    font-size: 30px;
+    font-weight: 900;
+    color: #2F4F4F;
+
+}
+
+.btn-select{
+    width: 50%;
+    height: 60px;
+    background-color: #008B8B;
+    border-color: #E9967A;
+    border-width: 3px;
+
+}
+
+.btn-select:hover{
+    background-color: #CD5C5C;
+}

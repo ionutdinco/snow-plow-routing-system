@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/add_resources.css' %}">
+{% endblock %}
+{% block title %}
+AddEmployee
+{% endblock %}
+<body>
+{% block user %}
+{{ name }}
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'admin_profile' %}"> Admin Profile </a>
+<a href="{% url 'login' %}"> Routing </a>
+{% endblock %}
+
+{% block section %}
+<section class="resources-view">
+    <div>
+        <div class=" add-employee m0">
+            <form class="employee-form" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="row-wrapp">
+                        <button class="btn-select s0" type="button">
+                            <span id="btn-text">one field</span>
+                        </button>
+                        <button class="btn-select s1" type="button">
+                            <span id="btn-text">two fields</span>
+                        </button>
+                    </div>
+                    <div class="info">
+                        <label>Email <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="info-mail">
+                        {{form_1.email}}
+                    </div>
+                    <div class="info">
+                        <button class="btn" type="submit">
+                            <span id="btn-center">&#10003;</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="add-employee m1">
+            <form class="resources-form" method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    {% if form.errors %}
+                    {% for field in form %}
+                    {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong><{{field.name}}> {{ error|escape }}</strong>
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+                <div class="form-row">
+                    <div class="info-label l1">
+                        <label>Brand/Model<span class="text-danger">*</span></label>
+                    </div>
+                    <div class="info-input">
+                        {{form_2.model}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="info-label">
+                        <label>VIN<span class="text-danger">*</span></label>
+                    </div>
+                    <div class="info-input">
+                        {{form_2.vin}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="info-label">
+                        <label> Tank Capacity<span class="text-danger">*</span></label>
+                    </div>
+                    <div class="info-input">
+                        {{form_2.tank_capacity}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="info-label">
+                        <label>Consumption<span class="text-danger">*</span></label>
+                    </div>
+                    <div class="info-input">
+                        {{form_2.consumption}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="info-label">
+                        <label>Availability</label>
+                    </div>
+                    <div class="info-label check">
+                        {{form_2.ready}} <span>Ready!</span>
+                    </div>
+                    <div class="info-label">
+                        <button class="btn" type="submit">
+                            <span id="btn-center">&#10003;</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+</body>

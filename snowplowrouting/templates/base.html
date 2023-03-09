@@ -1,0 +1,72 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block css %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css\base.css' %}">
+
+    <title>
+        {% block title %}
+         replace me!!!
+        {% endblock %}
+    </title>
+</head>
+<body>
+    <header>
+        <input type="image" class="menu-button" src="{% static 'png/menu-icon.png' %}" alt="Menu button" width="60">
+        <h3 id="configMode" onmouseover="showForm();" onmouseout="hideForm();">ConfigMode</h3>
+        <p class="slogan">
+            {% block user %}
+             <!replace me!!!>
+            {% endblock %}
+        </p>
+        <img class="logo" src="{static 'png/logo.png' %}" alt="logo image">
+
+        <nav class="menu-nav">
+            {% block content %}
+             <!replace me!!!>
+            {% endblock %}
+            <a href="#" onClick="document.getElementById('logoutform').submit()">
+            Logout</a>
+            <form id="logoutform" method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <input type="hidden">
+            </form>
+        </nav>
+</header>
+    <form id="configForm" method="POST" onmouseover="showForm();" onmouseout="hideForm();">
+        <span class="label">Config Here</span>
+        <span id="loginForm">
+            <span class="form-elements">
+                <span class="form-label">City:</span>
+                <span class="form-field"><input id="inputCity" type="text" /></span>
+            </span>
+            <span class="form-elements">
+                <span class="form-label">Mode:</span>
+                <select class="form-field" id="mode-selection" name="Primary streets">
+                    <option value="PrimaryStreets">Primary streets</option>
+                    <option value="PrimarySecondaryStreets">Primary + Secondary streets</option>
+                    <option value="CountyMode">CountyMode</option>
+                  </select>
+            </span>
+            <span class="form-elements">
+                <span class="submit-btn"><input type="submit" value="Save Config" /></span>
+            </span>
+        </span>
+        <span> Current Config:</span>
+        <span>
+            <p></p>
+            <p></p>
+        </span>
+    </form>
+    {% block section %}
+     <!replace me!!!>
+    {% endblock %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+
+    {% block js%}
+    {% endblock %}
+</body>
